@@ -14,8 +14,6 @@ import lombok.Setter;
 public class ProductDTO {
 	private Integer code;
 	private String name;
-	
-	@JsonIgnore
 	private float price;
 	
 	@JsonIgnore
