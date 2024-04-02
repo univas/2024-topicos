@@ -16,16 +16,18 @@ import br.edu.univas.si7.topicos.product.util.ProductEntityConverter;
 @Service
 public class ProductService {
 
-	@Autowired
 	private ProductRepository repo;
-	
+
+	@Autowired
+	public ProductService(ProductRepository repo) {
+		this.repo = repo;
+	}
+
 	public List<ProductDTO> findAll() {
-		return repo.findAll()
-				.stream()
-				.map(ProductEntityConverter::toDTO) //usando lambda para converter os objetos
+		return repo.findAll().stream().map(ProductEntityConverter::toDTO) // usando lambda para converter os objetos
 				.collect(Collectors.toList());
 	}
-	
+
 	public ProductDTO findById(Integer code) {
 		Optional<ProductEntity> obj = repo.findById(code);
 		ProductEntity entity = obj.orElseThrow(() -> new ObjectNotFoundException("Object not found: " + code));
@@ -33,10 +35,7 @@ public class ProductService {
 	}
 
 	public List<ProductDTO> findByActive(boolean b) {
-		return repo.findByActive(true)
-				.stream()
-				.map(ProductEntityConverter::toDTO)
-				.collect(Collectors.toList());
+		return repo.findByActive(true).stream().map(ProductEntityConverter::toDTO).collect(Collectors.toList());
 	}
-	
+
 }
