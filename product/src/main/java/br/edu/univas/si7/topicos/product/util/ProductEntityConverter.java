@@ -13,4 +13,10 @@ public class ProductEntityConverter {
 				product.getCode(), product.getName(), 
 				product.getPrice(), product.isActive());
 	}
+	
+	public ProductEntity toEntity(ProductDTO prod) {
+		System.out.println("toEntity: " + prod);
+		return new ProductEntity(prod.getCode(), prod.getName(),
+				prod.getPrice(), prod.isActive());
+	}
 }

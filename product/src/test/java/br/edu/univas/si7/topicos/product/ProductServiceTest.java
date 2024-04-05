@@ -50,7 +50,7 @@ public class ProductServiceTest {
 		p1.setCode(1);
 		Mockito.when(repoMock.findById(1)).thenReturn(Optional.of(p1));
 		
-		ProductDTO product = service.findById(1);
+		ProductEntity product = service.findById(1);
 		assertNotNull(product);
 		assertEquals(1, product.getCode());
 	}
