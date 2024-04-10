@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import br.edu.univas.si7.topicos.product.dtos.ProductDTO;
@@ -57,5 +58,20 @@ public class ProductService {
 
 	private void updateData(ProductEntity existingObj, ProductDTO newObj) {
 		existingObj.setName(newObj.getName());
+	}
+
+	public void deleteProduct(Integer code) {
+		if (code == null) {
+			throw new ProductException("Product code can not be null.");
+		}
+		ProductEntity obj = findById(code);
+		try {
+			repo.delete(obj);
+			// desativar o produto (ao invés de deletar)
+			//obj.setActive(false);
+			//repo.save(obj);
+		} catch (DataIntegrityViolationException e) {
+			throw new ProductException("Can not delete a Product with dependencies constraints.");
+		}
 	}
 }
