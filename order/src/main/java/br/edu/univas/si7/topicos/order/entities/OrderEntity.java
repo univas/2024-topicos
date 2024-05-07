@@ -3,6 +3,7 @@ package br.edu.univas.si7.topicos.order.entities;
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
@@ -19,4 +20,7 @@ public class OrderEntity {
 
 	@Id private String number;
 	private Date dateRequest;
+	
+	@DBRef(lazy = true)
+	private SellerEntity seller;
 }

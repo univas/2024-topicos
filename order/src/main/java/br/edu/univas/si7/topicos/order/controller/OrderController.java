@@ -19,6 +19,8 @@ public class OrderController {
 	@Autowired
 	private OrderService service;
 
+	
+	//Exercício extra: criar os DTOs
 	@GetMapping()
 	@ResponseStatus(HttpStatus.OK)
 	public List<OrderEntity> getAllOrders() {
