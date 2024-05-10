@@ -18,7 +18,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class OrderEntity {
 
-	@Id private String number;
+	@Id private Long number;
 	private Date dateRequest;
 	
 	@DBRef(lazy = true)

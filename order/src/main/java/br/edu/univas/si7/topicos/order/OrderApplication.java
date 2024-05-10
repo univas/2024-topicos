@@ -39,8 +39,8 @@ public class OrderApplication implements CommandLineRunner {
 		//salva os vendedores
 		sellerRepo.saveAll(Arrays.asList(s1, s2, s3));
 		
-		OrderEntity order1 = new OrderEntity("1", new Date(), s2);
-		OrderEntity order2 = new OrderEntity("2", new Date(), s3);
+		OrderEntity order1 = new OrderEntity(1L, new Date(), s2);
+		OrderEntity order2 = new OrderEntity(2L, new Date(), s3);
 		
 		//limpa a coleção de pedidos e salva novamente os pedidos
 		orderMongoRepo.deleteAll();
