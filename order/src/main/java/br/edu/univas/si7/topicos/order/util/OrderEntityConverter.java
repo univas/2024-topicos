@@ -11,7 +11,7 @@ public class OrderEntityConverter {
 
 	public static OrderEntity toEntity(OrderNewDTO dto) {
 		SellerEntity seller = new SellerEntity(dto.getSellerName(), dto.getSellerEmail());
-		OrderEntity entity = new OrderEntity(dto.getNumber(), new Date(), seller);
+		OrderEntity entity = new OrderEntity(dto.getNumber(), new Date(), seller, null);
 		return entity;
 	}
 	

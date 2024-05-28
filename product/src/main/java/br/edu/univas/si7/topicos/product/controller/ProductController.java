@@ -20,7 +20,7 @@ import br.edu.univas.si7.topicos.product.service.ProductService;
 import br.edu.univas.si7.topicos.product.util.ProductEntityConverter;
 
 @RestController
-@RequestMapping("/api/products")
+@RequestMapping("/api/product")
 public class ProductController {
 
 	@Autowired

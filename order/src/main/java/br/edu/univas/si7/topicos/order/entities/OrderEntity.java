@@ -23,4 +23,6 @@ public class OrderEntity {
 	
 	@DBRef(lazy = true)
 	private SellerEntity seller;
+	
+	private CustomerEntity customer;
 }

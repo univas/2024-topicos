@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>br.edu.univas.si7.topicos</groupId>
 	<artifactId>product</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<name>Product</name>
 	<description>Product Microservice</description>
 	<properties>
@@ -56,7 +56,6 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.30</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>

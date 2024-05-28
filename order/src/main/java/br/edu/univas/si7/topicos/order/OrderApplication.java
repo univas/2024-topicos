@@ -8,6 +8,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import br.edu.univas.si7.topicos.customer.enumeration.CustomerType;
+import br.edu.univas.si7.topicos.order.entities.CustomerEntity;
 import br.edu.univas.si7.topicos.order.entities.OrderEntity;
 import br.edu.univas.si7.topicos.order.entities.SellerEntity;
 import br.edu.univas.si7.topicos.order.repositories.OrderMongoRepository;
@@ -39,12 +41,14 @@ public class OrderApplication implements CommandLineRunner {
 		//salva os vendedores
 		sellerRepo.saveAll(Arrays.asList(s1, s2, s3));
 		
-		OrderEntity order1 = new OrderEntity(1L, new Date(), s2);
-		OrderEntity order2 = new OrderEntity(2L, new Date(), s3);
+		CustomerEntity ce1 = new CustomerEntity(1L, "c1", "e1@email", "111", CustomerType.PHISICPERSON.getType());
+		CustomerEntity ce2 = new CustomerEntity(2L, "c2", "e2@email", "222", CustomerType.JURIDICPERSON.getType());
+		OrderEntity order1 = new OrderEntity(1L, new Date(), s2, ce1);
+		OrderEntity order2 = new OrderEntity(2L, new Date(), s3, ce1);
 		
 		//limpa a coleção de pedidos e salva novamente os pedidos
 		orderMongoRepo.deleteAll();
-		orderMongoRepo.save(order1);
-		orderMongoRepo.save(order2);
+//		orderMongoRepo.save(order1);
+//		orderMongoRepo.save(order2);
 	}
 }

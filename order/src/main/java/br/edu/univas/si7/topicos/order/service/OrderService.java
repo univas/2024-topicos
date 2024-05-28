@@ -6,12 +6,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.edu.univas.si7.topicos.customer.dto.CustomerDTO;
 import br.edu.univas.si7.topicos.order.dto.OrderDTO;
 import br.edu.univas.si7.topicos.order.dto.OrderNewDTO;
 import br.edu.univas.si7.topicos.order.entities.OrderEntity;
 import br.edu.univas.si7.topicos.order.repositories.OrderMongoRepository;
 import br.edu.univas.si7.topicos.order.repositories.SellerMongoRepository;
 import br.edu.univas.si7.topicos.order.support.ObjectNotFoundException;
+import br.edu.univas.si7.topicos.order.util.CustomerEntityConverter;
 import br.edu.univas.si7.topicos.order.util.OrderEntityConverter;
 
 @Service
@@ -22,6 +24,9 @@ public class OrderService {
 
 	@Autowired
 	private SellerMongoRepository sellerRepo;
+	
+	@Autowired
+	private OrderClient orderClient;
 
 	public List<OrderEntity> findAll() {
 		return repo.findAll();
@@ -29,6 +34,10 @@ public class OrderService {
 
 	public void createOrder(OrderNewDTO dto) {
 		OrderEntity entity = OrderEntityConverter.toEntity(dto);
+		
+		CustomerDTO customerDetails = orderClient.getCustomerDetail(dto.getCustomerId());
+		entity.setCustomer(CustomerEntityConverter.toEntity(customerDetails));
+		
 		sellerRepo.save(entity.getSeller());
 		repo.save(entity);
 	}
