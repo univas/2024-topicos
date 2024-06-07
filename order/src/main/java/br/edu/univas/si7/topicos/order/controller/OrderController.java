@@ -19,7 +19,7 @@ import br.edu.univas.si7.topicos.order.entities.OrderEntity;
 import br.edu.univas.si7.topicos.order.service.OrderService;
 
 @RestController
-@RequestMapping("/api/orders")
+@RequestMapping("/api/order")
 public class OrderController {
 
 	@Autowired

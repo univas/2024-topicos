@@ -48,7 +48,7 @@ public class OrderApplication implements CommandLineRunner {
 		
 		//limpa a coleção de pedidos e salva novamente os pedidos
 		orderMongoRepo.deleteAll();
-//		orderMongoRepo.save(order1);
+		orderMongoRepo.save(order1);
 //		orderMongoRepo.save(order2);
 	}
 }
